@@ -8,6 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@vercel/analytics": "^0.1.11",
     "upload-js": "^2.11.2",
     "vuetify": "^3.1.4"
   },
