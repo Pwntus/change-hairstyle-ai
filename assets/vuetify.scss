@@ -1,0 +1,6 @@
+$font: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+  'Helvetica', Arial, sans-serif;
+
+@use 'vuetify/settings' with (
+  $body-font-family: $font
+);
