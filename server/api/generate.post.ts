@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Token ' + process.env.NUXT_REPLICATE_API_TOKEN
+      Authorization: 'Token ' + useRuntimeConfig().replicateApiToken
     },
     body: JSON.stringify({
       version:
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Token ' + process.env.NUXT_REPLICATE_API_TOKEN
+        Authorization: 'Token ' + useRuntimeConfig().replicateApiToken
       }
     })
     const json_status = await response_status.json()
