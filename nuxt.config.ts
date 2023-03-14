@@ -2,7 +2,7 @@ import vuetify from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   runtimeConfig: {
-    replicateApiToken: '',
+    replicateApiToken: process.env.NUXT_REPLICATE_API_TOKEN || '',
     public: {
       uploadApiKey: process.env.NUXT_PUBLIC_UPLOAD_API_KEY || 'free'
     }

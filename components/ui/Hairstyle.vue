@@ -82,7 +82,6 @@ import { hairstyle_items, shade_items, color_items } from '~/assets/configs'
 
 // Modules
 const runtimeConfig = useRuntimeConfig()
-console.log('debug', runtimeConfig)
 
 // Instances
 const upload = Upload({
