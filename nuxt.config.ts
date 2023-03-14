@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     replicateApiToken: '',
     public: {
-      uploadApiKey: 'free'
+      uploadApiKey: process.env.NUXT_PUBLIC_UPLOAD_API_KEY || 'free'
     }
   },
   nitro: {
