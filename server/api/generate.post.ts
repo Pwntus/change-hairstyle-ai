@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   const id = json.id
   const getURL = json.urls.get
 
-  // Kepp polling prediction until an output is created (or failed)
+  // Keep polling prediction until an output is created (or failed)
   let status = null
   let output = null
   while (!output) {

@@ -78,7 +78,11 @@ main
 <script setup lang="ts">
 // Imports
 import { Upload } from 'upload-js'
-import { hairstyle_items, shade_items, color_items } from '~/assets/configs'
+import {
+  hairstyle_items,
+  shade_items,
+  color_items
+} from '~/assets/static/hair-config'
 
 // Modules
 const runtimeConfig = useRuntimeConfig()
