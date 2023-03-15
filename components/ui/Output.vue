@@ -1,15 +1,25 @@
 <template lang="pug">
 section
   template(v-if="isSuccess")
-    .text-h5 {{ props.output.hairstyle }}, {{ props.output.shade }} {{ props.output.color }}
+    .text-h5 {{ props.output?.hairstyle }}, {{ props.output?.shade }} {{ props.output?.color }}
     img(:src="props.output.output || ''")
-  template(v-else)
+  template(v-else-if="isFail")
     .text-h5 Something failed. Try again.
+  template(v-else)
+    .pa-4
+      v-progress-circular(
+        :size="64"
+        :width="8"
+        color="secondary"
+        indeterminate
+      )
+      .text-h5.pt-4 {{ props.output?.status }}...
 </template>
 
 <script setup lang="ts">
 const props = defineProps(['output'])
 const isSuccess = computed(() => props.output.status === 'succeeded')
+const isFail = computed(() => props.output.status === 'failed')
 </script>
 
 <style lang="stylus" scoped>

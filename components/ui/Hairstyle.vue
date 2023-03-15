@@ -57,7 +57,7 @@ main
             label="Color"
           )
           v-btn(
-            @click="submit"
+            @click="createPrediction"
             :disabled="!image"
             :loading="loading_submit"
             color="secondary"
@@ -84,6 +84,12 @@ import {
   color_items
 } from '~/assets/static/hair-config'
 
+interface Prediction {
+  id: string
+  status: string
+  output: string
+}
+
 // Modules
 const runtimeConfig = useRuntimeConfig()
 
@@ -101,7 +107,30 @@ const color = ref('blonde')
 const loading_file = ref(false)
 const loading_file_pc = ref(0)
 const loading_submit = ref(false)
-const list: any[] = reactive([])
+const list: Prediction[] = reactive([])
+let interval: null | NodeJS.Timer = null
+
+// Computed
+const processing = computed<Prediction[]>(() =>
+  list.filter(
+    (item) => item?.status === 'starting' || item?.status === 'processing'
+  )
+)
+
+// Watcher
+watch(processing, (list) => {
+  if (list.length > 0) {
+    if (interval) return
+
+    // interval to read every processing prediction every 2s
+    interval = setInterval(async () => {
+      await Promise.all(processing.value.map((item) => readPrediction(item.id)))
+    }, 2000)
+  } else {
+    if (interval) clearInterval(interval)
+    interval = null
+  }
+})
 
 // Methods
 const onClickUpload = () => {
@@ -135,10 +164,10 @@ const onFileSelected = async (e: any) => {
   }
 }
 
-const submit = async () => {
+const createPrediction = async () => {
   loading_submit.value = true
   try {
-    const data = await $fetch('/api/generate', {
+    const data: any = await $fetch('/api/create', {
       method: 'post',
       body: {
         image: image.value,
@@ -147,12 +176,30 @@ const submit = async () => {
         color: color.value
       }
     })
-    console.log(data)
-    list.unshift(data)
+
+    // Add response to beginning of list
+    list.unshift({ ...data, hairstyle, shade, color })
   } catch (e) {
     console.log(e)
   } finally {
     loading_submit.value = false
+  }
+}
+
+const readPrediction = async (id: string) => {
+  try {
+    const data: any = await $fetch('/api/read', {
+      method: 'post',
+      body: {
+        id
+      }
+    })
+
+    // Patch response back to list
+    const index = processing.value?.findIndex((item) => item?.id === id)
+    if (index > -1) list[index] = { ...list[index], ...data }
+  } catch (e) {
+    console.log(e)
   }
 }
 </script>

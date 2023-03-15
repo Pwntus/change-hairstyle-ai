@@ -23,31 +23,8 @@ export default defineEventHandler(async (event) => {
 
   // Parse prediction
   const id = json.id
-  const getURL = json.urls.get
+  const status = json.status
+  const output = json.output
 
-  // Keep polling prediction until an output is created (or failed)
-  let status = null
-  let output = null
-  while (!output) {
-    const response_status = await fetch(getURL, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Token ' + useRuntimeConfig().replicateApiToken
-      }
-    })
-    const json_status = await response_status.json()
-
-    // Parse prediction status
-    status = json_status.status
-
-    if (status === 'succeeded') {
-      output = json_status.output
-      break
-    }
-    if (status === 'failed') break
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-  }
-
-  return { id, status, output, hairstyle, shade, color }
+  return { id, status, output }
 })
