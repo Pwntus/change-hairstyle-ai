@@ -88,6 +88,9 @@ interface Prediction {
   id: string
   status: string
   output: string
+  hairstyle: string
+  shade: string
+  color: string
 }
 
 // Modules
@@ -167,7 +170,7 @@ const onFileSelected = async (e: any) => {
 const createPrediction = async () => {
   loading_submit.value = true
   try {
-    const data: any = await $fetch('/api/create', {
+    const data: Prediction = await $fetch('/api/create', {
       method: 'post',
       body: {
         image: image.value,
@@ -178,7 +181,12 @@ const createPrediction = async () => {
     })
 
     // Add response to beginning of list
-    list.unshift({ ...data, hairstyle, shade, color })
+    list.unshift({
+      ...data,
+      hairstyle: hairstyle.value,
+      shade: shade.value,
+      color: color.value
+    })
   } catch (e) {
     console.log(e)
   } finally {
@@ -188,7 +196,7 @@ const createPrediction = async () => {
 
 const readPrediction = async (id: string) => {
   try {
-    const data: any = await $fetch('/api/read', {
+    const data: Prediction = await $fetch('/api/read', {
       method: 'post',
       body: {
         id
