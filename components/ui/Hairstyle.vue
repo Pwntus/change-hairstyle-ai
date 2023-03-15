@@ -136,6 +136,42 @@ watch(processing, (list) => {
 })
 
 // Methods
+const getFileDimensions = (
+  file: any
+): Promise<{ width: number; height: number }> => {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(file)
+    const img = new Image()
+    img.onload = () => {
+      const { width, height } = img
+      URL.revokeObjectURL(img.src)
+      resolve({ width, height })
+    }
+    img.src = url
+  })
+}
+
+const calculateAspectRatioFit = (
+  srcWidth: number,
+  srcHeight: number,
+  maxWidth: number,
+  maxHeight: number
+) => {
+  const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight)
+  return { width: srcWidth * ratio, height: srcHeight * ratio }
+}
+
+const bmpToBlob = async (bmp: ImageBitmap): Promise<Blob | null> => {
+  const canvas = document.createElement('canvas')
+  canvas.width = bmp.width
+  canvas.height = bmp.height
+  const ctx = canvas.getContext('bitmaprenderer')
+  if (!ctx) return null
+  ctx.transferFromImageBitmap(bmp)
+  const blob = await new Promise((res: BlobCallback) => canvas.toBlob(res))
+  return blob
+}
+
 const onClickUpload = () => {
   if (loading_file.value || loading_submit.value) return
   file.value?.click()
@@ -148,7 +184,20 @@ const onFileSelected = async (e: any) => {
   try {
     const file = e.target.files[0]
 
-    const { fileUrl } = await upload.uploadFile(file, {
+    // Get uploaded file dimensions
+    const { width, height } = await getFileDimensions(file)
+
+    // Resize image (max width/height 512/512)
+    const { width: resizeWidth, height: resizeHeight } =
+      calculateAspectRatioFit(width, height, 512, 512)
+    const bmp = await createImageBitmap(file, {
+      resizeWidth,
+      resizeHeight
+    })
+    const blob = await bmpToBlob(bmp)
+    if (!blob) throw new Error('Failed to create blob.')
+
+    const { fileUrl } = await upload.uploadFile(blob, {
       onProgress: ({ bytesSent, bytesTotal }) => {
         loading_file_pc.value = (bytesSent / bytesTotal) * 100
       },

@@ -13,7 +13,9 @@ section
         color="secondary"
         indeterminate
       )
-      .text-h5.pt-4 {{ props.output?.status }}...
+      .text-h5.pt-4
+        | {{ props.output?.status }}
+        span  (may take 3 minutes)...
 </template>
 
 <script setup lang="ts">
@@ -37,4 +39,7 @@ section
   .text-h5
     font-weight 400
     text-transform capitalize !important
+
+    span
+      text-transform none !important
 </style>
