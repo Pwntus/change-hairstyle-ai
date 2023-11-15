@@ -18,14 +18,11 @@ This app is powered by:
 
 ## Run it yourself
 
-You need a [Replicate API token](https://replicate.com/account?utm_source=github&utm_campaign=changehairstyleai) (and optionally an [Upload.io public API key](https://upload.io/dashboard/security/api_keys)). Copy the contents of [.example.env](.example.env) into a new file in the root of your directory called `.env` and insert the API key(s) there, like this:
+You need a [Replicate API token](https://replicate.com/account?utm_source=github&utm_campaign=changehairstyleai). Copy the contents of [.example.env](.example.env) into a new file in the root of your directory called `.env` and insert the API key there, like this:
 
 ```bash
 # Get your Replicate API token at https://www.replicate.com/account
 NUXT_REPLICATE_API_TOKEN=<put your token here>
-
-# Optional, if you're planning to use Upload.io.
-NUXT_PUBLIC_UPLOAD_API_KEY=<put your key here>
 ```
 
 Then, install the dependencies and run the local development server:
