@@ -1696,15 +1696,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/analytics@npm:^0.1.11":
-  version: 0.1.11
-  resolution: "@vercel/analytics@npm:0.1.11"
-  peerDependencies:
-    react: ^16.8||^17||^18
-  checksum: 05b8180ac6e23ebe7c09d74c43f8ee78c408cd0b6546e676389cbf4fba44dfeeae3648c9b52e2421be64fe3aeee8b026e6ea4bdfc0589fb5780670f2b090a167
-  languageName: node
-  linkType: hard
-
 "@vercel/nft@npm:^0.24.3":
   version: 0.24.3
   resolution: "@vercel/nft@npm:0.24.3"
@@ -6583,7 +6574,6 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@mdi/font": ^7.3.67
-    "@vercel/analytics": ^0.1.11
     nuxt: ^3.8.1
     pug: ^3.0.2
     pug-plain-loader: ^1.1.0

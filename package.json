@@ -7,9 +7,6 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "dependencies": {
-    "@vercel/analytics": "^0.1.11"
-  },
   "devDependencies": {
     "@mdi/font": "^7.3.67",
     "nuxt": "^3.8.1",

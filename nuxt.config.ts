@@ -28,5 +28,22 @@ export default defineNuxtConfig({
         transformAssetUrls
       }
     }
+  },
+  app: {
+    head: {
+      script: [
+        {
+          async: true,
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_GTAG_ID}`
+        },
+        {
+          children: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NUXT_GTAG_ID}');`
+        }
+      ]
+    }
   }
 })
