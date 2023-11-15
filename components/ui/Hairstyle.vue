@@ -77,7 +77,6 @@ main
 
 <script setup lang="ts">
 // Imports
-import { Upload } from 'upload-js'
 import {
   hairstyle_items,
   shade_items,
@@ -95,11 +94,6 @@ interface Prediction {
 
 // Modules
 const runtimeConfig = useRuntimeConfig()
-
-// Instances
-const upload = Upload({
-  apiKey: runtimeConfig.public.uploadApiKey
-})
 
 // State
 const file = ref<null | HTMLInputElement>(null)
@@ -197,18 +191,11 @@ const onFileSelected = async (e: any) => {
     const blob = await bmpToBlob(bmp)
     if (!blob) throw new Error('Failed to create blob.')
 
-    const { fileUrl } = await upload.uploadFile(blob, {
-      onProgress: ({ bytesSent, bytesTotal }) => {
-        loading_file_pc.value = (bytesSent / bytesTotal) * 100
-      },
-      path: {
-        // See path variables: https://upload.io/dashboard/docs/path-variables
-        folderPath:
-          '/uploads/changehairstyleai/{UTC_YEAR}/{UTC_MONTH}/{UTC_DAY}',
-        fileName: '{UNIQUE_DIGITS_8}{ORIGINAL_FILE_EXT}'
-      }
-    })
-    image.value = fileUrl
+    const reader = new FileReader()
+    reader.onload = () => {
+      image.value = String(reader.result)
+    }
+    reader.readAsDataURL(blob)
   } catch (e) {
     console.log(e)
   } finally {

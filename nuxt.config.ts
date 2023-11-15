@@ -2,10 +2,7 @@ import vuetify from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   runtimeConfig: {
-    replicateApiToken: process.env.NUXT_REPLICATE_API_TOKEN || '',
-    public: {
-      uploadApiKey: process.env.NUXT_PUBLIC_UPLOAD_API_KEY || 'free'
-    }
+    replicateApiToken: process.env.NUXT_REPLICATE_API_TOKEN || ''
   },
   nitro: {
     preset: 'vercel-edge'

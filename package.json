@@ -9,12 +9,11 @@
   },
   "dependencies": {
     "@vercel/analytics": "^0.1.11",
-    "upload-js": "^2.11.2",
-    "vuetify": "^3.1.4"
+    "vuetify": "^3.4.1"
   },
   "devDependencies": {
     "@mdi/font": "^7.1.96",
-    "nuxt": "^3.3.0",
+    "nuxt": "^3.8.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "sass": "^1.59.2",
