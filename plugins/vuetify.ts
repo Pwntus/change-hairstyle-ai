@@ -1,3 +1,5 @@
+import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
 import { createVuetify, ThemeDefinition } from 'vuetify'
 
 const lightTheme: ThemeDefinition = {
@@ -14,7 +16,7 @@ const lightTheme: ThemeDefinition = {
   }
 }
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     ssr: true,
     theme: {
@@ -25,5 +27,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   })
 
-  nuxtApp.vueApp.use(vuetify)
+  app.vueApp.use(vuetify)
 })

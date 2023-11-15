@@ -886,10 +886,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdi/font@npm:^7.1.96":
-  version: 7.1.96
-  resolution: "@mdi/font@npm:7.1.96"
-  checksum: db6dce72f553e844d049cc563cf89ae58dfd0f55f99f743ccbf1ca6ab644c940f50fbd78ecd91290a67ebb58fa5bae4983bbab782a6611456bd87566825c1ca4
+"@mdi/font@npm:^7.3.67":
+  version: 7.3.67
+  resolution: "@mdi/font@npm:7.3.67"
+  checksum: 34af78e108b1cbf30760a062a0d4c25e58fb13b719cef535b96116c6f522f877f19448d4389dac87176bd3bbca240b9f721b1b01599f0b333311edbff5d2fba9
   languageName: node
   linkType: hard
 
@@ -6582,7 +6582,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@mdi/font": ^7.1.96
+    "@mdi/font": ^7.3.67
     "@vercel/analytics": ^0.1.11
     nuxt: ^3.8.1
     pug: ^3.0.2
