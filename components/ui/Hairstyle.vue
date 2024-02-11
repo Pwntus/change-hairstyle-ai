@@ -75,6 +75,26 @@ main
         cols="12"
       )
         ui-output(:output="item")
+
+    div(
+      style="text-align:center;margin-top:60px;"
+    )
+      v-btn(
+        href="https://shopduffelbag.com/?utm_campaign=changehairstyleai"
+        target="_new"
+        color="secondary"
+        prepend-icon="mdi-shopping"
+        variant="tonal"
+        rounded="xl"
+        size="large"
+      )
+        v-badge(
+          content="shopduffelbag.com"
+          color="black"
+          offset-x="60"
+          offset-y="-10"
+          floating
+        ) Need a quality travel bag?
 </template>
 
 <script setup lang="ts">
