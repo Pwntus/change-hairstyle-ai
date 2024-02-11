@@ -77,7 +77,7 @@ main
         ui-output(:output="item")
 
     div(
-      style="text-align:center;margin-top:60px;"
+      :style="{textAlign: 'center', marginTop: display.mdAndUp ? '60px' : '10px'}"
     )
       v-btn(
         href="https://shopduffelbag.com/?utm_campaign=changehairstyleai"
@@ -86,19 +86,22 @@ main
         prepend-icon="mdi-shopping"
         variant="tonal"
         rounded="xl"
-        size="large"
+        :size="display.mdAndUp ? 'large' : 'default'"
       )
         v-badge(
+          v-if="display.mdAndUp"
           content="shopduffelbag.com"
           color="black"
           offset-x="60"
           offset-y="-10"
           floating
         ) Need a quality travel bag?
+        template(v-else) Need a quality travel bag?
 </template>
 
 <script setup lang="ts">
 // Imports
+import { useDisplay } from 'vuetify'
 import {
   hairstyle_items,
   shade_items,
@@ -128,6 +131,7 @@ const loading_file_pc = ref(0)
 const loading_submit = ref(false)
 const list: Prediction[] = reactive([])
 let interval: null | NodeJS.Timer = null
+const display = ref(useDisplay())
 
 // Computed
 const processing = computed<Prediction[]>(() =>
