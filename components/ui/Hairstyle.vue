@@ -12,7 +12,7 @@ main
 
     //- Upload and configure
     v-row
-      v-col(cols="12")
+      v-col(cols="12" v-if="false")
         center(style="color:red;") The free service is unfortunately disabled. You can still clone this project and run it by yourself.
       v-col(
         cols="12"
@@ -60,7 +60,7 @@ main
           )
           v-btn(
             @click="createPrediction"
-            :disabled="!image || true"
+            :disabled="!image"
             :loading="loading_submit"
             color="secondary"
             size="x-large"

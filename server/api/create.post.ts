@@ -2,11 +2,10 @@ export default defineEventHandler(async (event) => {
   const { image, hairstyle, shade, color } = await readBody(event)
 
   // Using deployments
-  const endpoint =
-    'https://api.replicate.com/v1/deployments/replicate/changehairstyleai-com/predictions'
+  // const endpoint = 'https://api.replicate.com/v1/deployments/replicate/changehairstyleai-com/predictions'
 
   // Using public model
-  // endpoint = "https://api.replicate.com/v1/predictions"
+  const endpoint = 'https://api.replicate.com/v1/predictions'
 
   // Create prediction
   try {
@@ -17,6 +16,8 @@ export default defineEventHandler(async (event) => {
         Authorization: 'Token ' + useRuntimeConfig().replicateApiToken
       },
       body: JSON.stringify({
+        version:
+          'b95cb2a16763bea87ed7ed851d5a3ab2f4655e94bcfb871edba029d4814fa587',
         input: {
           image,
           editing_type: 'both',
