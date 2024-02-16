@@ -9,8 +9,8 @@ v-app
 </template>
 
 <script setup lang="ts">
-const title = 'Change Hairstyle AI'
-const description = 'Get a new hairstyle in seconds.'
+const title = 'Change Hairstyle AI for FREE'
+const description = 'Get a new hairstyle in seconds, for free.'
 const image = 'https://changehairstyleai.com/cover.jpg'
 
 useServerSeoMeta({
