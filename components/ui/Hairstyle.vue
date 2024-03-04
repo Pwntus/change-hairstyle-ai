@@ -80,7 +80,7 @@ main
       :style="{textAlign: 'center', marginTop: display.mdAndUp ? '60px' : '10px'}"
     )
       v-btn(
-        href="https://shopduffelbag.com/?utm_campaign=changehairstyleai"
+        href="https://nettilaukku.fi/?utm_campaign=changehairstyleai"
         target="_new"
         color="secondary"
         prepend-icon="mdi-shopping"
@@ -90,13 +90,13 @@ main
       )
         v-badge(
           v-if="display.mdAndUp"
-          content="shopduffelbag.com"
+          content="nettilaukku.fi"
           color="black"
           offset-x="60"
           offset-y="-10"
           floating
-        ) Need a quality travel bag?
-        template(v-else) Need a quality travel bag?
+        ) Need a quality bag?
+        template(v-else) Need a quality bag?
 </template>
 
 <script setup lang="ts">
