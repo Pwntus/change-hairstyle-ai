@@ -59,7 +59,7 @@ main
             label="Color"
           )
           v-btn(
-            @click="createPrediction"
+            @click=""
             :disabled="!image"
             :loading="loading_submit"
             color="secondary"
