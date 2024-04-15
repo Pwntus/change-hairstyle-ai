@@ -77,6 +77,7 @@ main
         ui-output(:output="item")
 
     div(
+      v-if="false"
       :style="{textAlign: 'center', marginTop: display.mdAndUp ? '60px' : '10px'}"
     )
       v-btn(
@@ -97,6 +98,28 @@ main
           floating
         ) Need a quality bag?
         template(v-else) Need a quality bag?
+
+    div(
+      :style="{textAlign: 'center', marginTop: display.mdAndUp ? '60px' : '10px'}"
+    )
+      v-btn(
+        href="https://animateimgai.com/?utm_campaign=changehairstyleai"
+        target="_new"
+        color="secondary"
+        prepend-icon="mdi-shopping"
+        variant="tonal"
+        rounded="xl"
+        :size="display.mdAndUp ? 'large' : 'default'"
+      )
+        v-badge(
+          v-if="display.mdAndUp"
+          content="animateimgai.com"
+          color="black"
+          offset-x="60"
+          offset-y="-10"
+          floating
+        ) Animate an image
+        template(v-else) Animate an image
 </template>
 
 <script setup lang="ts">
