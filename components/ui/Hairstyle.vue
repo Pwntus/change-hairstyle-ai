@@ -106,7 +106,7 @@ main
         href="https://animateimgai.com/?utm_campaign=changehairstyleai"
         target="_new"
         color="secondary"
-        prepend-icon="mdi-shopping"
+        prepend-icon="mdi-animation-play"
         variant="tonal"
         rounded="xl"
         :size="display.mdAndUp ? 'large' : 'default'"
