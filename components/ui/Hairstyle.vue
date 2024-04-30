@@ -77,7 +77,7 @@ main
         ui-output(:output="item")
 
     div(
-      v-if="false"
+      v-if="true"
       :style="{textAlign: 'center', marginTop: display.mdAndUp ? '60px' : '10px'}"
     )
       v-btn(
